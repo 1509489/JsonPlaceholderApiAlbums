@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">JsonPlaceholderApi-Albums</string>
+    <string name="app_name">Albums API</string>
+    <string name="sort_a_z">Sort A-Z</string>
+    <string name="sort_z_a">Sort Z-A</string>
 </resources>

@@ -1,8 +1,12 @@
 package com.pixelart.jsonplaceholderapi_albums.di.activity
 
-import dagger.Component
+import com.pixelart.jsonplaceholderapi_albums.factories.ViewModelFactory
+import com.pixelart.jsonplaceholderapi_albums.ui.MainActivity
+import dagger.Subcomponent
 
 @ActivityScope
-@Component(modules = [ActivityModule::class])
+@Subcomponent(modules = [ActivityModule::class])
 interface ActivityComponent {
+    fun getViewModelFactory():ViewModelFactory
+    fun inject(mainActivity: MainActivity)
 }

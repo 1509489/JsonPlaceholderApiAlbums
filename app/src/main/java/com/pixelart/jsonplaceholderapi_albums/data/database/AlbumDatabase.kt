@@ -6,7 +6,7 @@ import com.pixelart.jsonplaceholderapi_albums.common.DATABASE_VERSION
 import com.pixelart.jsonplaceholderapi_albums.data.dao.AlbumDao
 import com.pixelart.jsonplaceholderapi_albums.data.entities.AlbumEntity
 
-@Database(entities = [AlbumEntity::class], version = DATABASE_VERSION)
+@Database(entities = [AlbumEntity::class], version = DATABASE_VERSION, exportSchema = false)
 abstract class AlbumDatabase: RoomDatabase() {
 
     abstract fun albumDao(): AlbumDao
