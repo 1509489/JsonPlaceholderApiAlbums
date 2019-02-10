@@ -2,4 +2,8 @@
     <string name="app_name">Albums API</string>
     <string name="sort_a_z">Sort A-Z</string>
     <string name="sort_z_a">Sort Z-A</string>
+
+    <string name="error_message">No internet connection available.\nThe app need internet connection to update albums.\n
+        If this is the first launch of the app, make sure you are connected to the internet and open the app again.
+    </string>
 </resources>

@@ -17,7 +17,7 @@ class NetworkModule {
 
     @Provides
     @ApplicationScope
-    fun providesIntercepter(): HttpLoggingInterceptor {
+    fun providesInterceptor(): HttpLoggingInterceptor {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         return interceptor
