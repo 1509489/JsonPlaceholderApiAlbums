@@ -8,13 +8,11 @@ import com.pixelart.jsonplaceholderapi_albums.data.model.AlbumResponse
 import com.pixelart.jsonplaceholderapi_albums.data.network.NetworkService
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class RepositoryImpl(private val networkService: NetworkService, private val database: AlbumDatabase): Repository {
 
-    private val compositeDisposable = CompositeDisposable()
     private val albums = MutableLiveData<List<AlbumResponse>>()
     private val state = MutableLiveData<State>()
 
@@ -50,17 +48,6 @@ class RepositoryImpl(private val networkService: NetworkService, private val dat
     }
 
     fun getState():LiveData<State> = state
-
-    fun getAlbumList(albums: List<AlbumResponse>): MutableLiveData<List<AlbumResponse>>{
-        this.albums.value = albums
-        return this.albums
-    }
-
-    private fun onHandleError(e: Throwable){
-        if (e.message != null){
-            e.printStackTrace()
-        }
-    }
 
     enum class State{
         SUCCESS,

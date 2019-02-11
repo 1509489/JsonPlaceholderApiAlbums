@@ -23,6 +23,7 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), AlbumAdapter.OnItemClickedListener, SortFragment.OnInteractionListener,
     MessageFragment.OnInteractionListener{
+    private val TAG = "MainActivity"
 
     @Inject lateinit var viewModel: MainViewModel
 
@@ -44,7 +45,6 @@ class MainActivity : AppCompatActivity(), AlbumAdapter.OnItemClickedListener, So
 
         countingIdlingResource.increment()
         viewModel.getAlbumsNetwork().observe(this, Observer {
-            //Toast.makeText(this@MainActivity, albumList[0].title, Toast.LENGTH_SHORT).show()
             for (album in it){
                 viewModel.insertAlbum(album.userId, album.id, album.title)
             }
@@ -52,17 +52,16 @@ class MainActivity : AppCompatActivity(), AlbumAdapter.OnItemClickedListener, So
         countingIdlingResource.decrement()
 
         viewModel.getAlbumsASC().observe(this, Observer {
-            //Toast.makeText(this@MainActivity, it[0].title, Toast.LENGTH_SHORT).show()
             adapter.submitList(it)
         })
 
         viewModel.getState().observe(this, Observer {
             when(it!!){
                 RepositoryImpl.State.LOADING ->{
-                    Log.d("MainActivity", "Fetching Data")
+                    Log.d(TAG, "Fetching Data")
                 }
                 RepositoryImpl.State.SUCCESS ->{
-                    Log.d("MainActivity", "Data Fetch Success")
+                    Log.d(TAG, "Data Fetch Success")
                 }
                 RepositoryImpl.State.FAILURE ->{
                     message = resources.getString(R.string.error_message)
@@ -85,12 +84,10 @@ class MainActivity : AppCompatActivity(), AlbumAdapter.OnItemClickedListener, So
     override fun onSort(sortAtoZ: Boolean) {
         if (sortAtoZ){
             viewModel.getAlbumsASC().observe(this, Observer {
-                //Toast.makeText(this@MainActivity, it[0].title, Toast.LENGTH_SHORT).show()
                 adapter.submitList(it)
             })
         }else{
             viewModel.getAlbumsDESC().observe(this, Observer {
-                //Toast.makeText(this@MainActivity, it[0].title, Toast.LENGTH_SHORT).show()
                 adapter.submitList(it)
             })
         }

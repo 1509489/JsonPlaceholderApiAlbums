@@ -13,7 +13,6 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.pixelart.jsonplaceholderapi_albums.adapter.AlbumAdapter
-import com.pixelart.jsonplaceholderapi_albums.common.BASE_URL
 import com.pixelart.jsonplaceholderapi_albums.ui.MainActivity
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
